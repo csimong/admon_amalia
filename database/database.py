@@ -1,0 +1,1 @@
+"""Database connection and management file. It contains functions to connect to the database."""

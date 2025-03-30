@@ -1,0 +1,5 @@
+## Required libraries for the project
+
+PyQt6==6.4.2
+pylint==3.3.5
+pyqt6-tools==6.4.2.3.3
