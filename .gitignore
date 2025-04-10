@@ -1,2 +1,8 @@
 # Configuration
 .vscode
+
+# Database
+*.db
+
+# Others
+__pycache__
