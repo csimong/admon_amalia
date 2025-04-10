@@ -1,8 +1,8 @@
 <!-- Information about the project -->
 
-### iNITIATE APP
+### Initiate App
 python main.py
 
-### Initiate database
+### Initiate Database
 python database/database.py
 
