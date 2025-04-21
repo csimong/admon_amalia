@@ -2,21 +2,16 @@
 
 import sys
 from PyQt6.QtWidgets import QApplication
-from gui.app import MyApp
-from database.database import Database
+from application.landing.gui.app import MainWindow
+from shared.database.database_manager import Database
 
 
 def main():
-    # Initiate database
-    db = Database()
-    with open("database/schema.sql", "r") as f:
-        db.cursor.executescript(f.read())
-        db.conn.commit()
-    db.close()
+    Database().init_database()
 
     # Initiate PyQt app
     app = QApplication(sys.argv)
-    window = MyApp()
+    window = MainWindow()
     window.show()
 
     # Execute main app loop and exit when user close the window

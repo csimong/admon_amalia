@@ -1,9 +1,9 @@
 """User management file. It contains functions to create, delete and update users."""
 
-from database.database import Database
+from shared.database.database_manager import Database
 
 
-class UserManager():
+class UserRepository():
     def __init__(self):
         self.db = Database()
 

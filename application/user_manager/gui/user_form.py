@@ -1,19 +1,14 @@
-"""Main window configuration. It creates the main app window."""
-
-import sys
-from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton, QLineEdit, QLabel, QMessageBox, \
-    QHBoxLayout, QVBoxLayout, QListWidget
-from logic.user_manager import UserManager
-
-
-class MyApp(QMainWindow):
+"""Data forms."""
+from PyQt6.QtWidgets import QLabel, QLineEdit, QWidget, QPushButton, QMessageBox
+from application.user_manager.repository.user_repository import UserRepository
+class UserManagerWindow(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Mi App de Usuarios")
+        self.setWindowTitle("Área de gestión de Usuarios")
         self.setGeometry(100, 100, 600, 300)
 
         # Initialize User manager
-        self.user_manager = UserManager()
+        self.user_repository = UserRepository()
 
         # Create user name widgets
         self.label_name = QLabel("Nombre:", self)
@@ -54,15 +49,8 @@ class MyApp(QMainWindow):
         email = self.input_email.text()
         phone = self.input_phone.text()
         if name and surnames:
-            self.user_manager.add_user(name, surnames, email, phone)
+            self.user_repository.add_user(name, surnames, email, phone)
             print("Usuario agregado:", name, surnames, email, phone)
         else:
             QMessageBox.warning(
                 self, "Error", "Debes especificar nombre y apellidos del usuario.")
-
-
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    window = MyApp()
-    window.show()
-    sys.exit(app.exec())
