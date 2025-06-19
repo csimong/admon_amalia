@@ -25,5 +25,9 @@ class Database():
         self.cursor.execute(query, params)
         return self.cursor.fetchall()
     
+    def get_one(self, query, params=()):
+        self.cursor.execute(query, params)
+        return self.cursor.fetchone()
+    
     def close(self):
         self.conn.close()
