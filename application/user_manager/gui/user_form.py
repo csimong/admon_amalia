@@ -35,7 +35,7 @@ class UserManagerWindow(QWidget):
         form_layout.addRow("Teléfono:", self.input_phone)
 
 
-        # Save user data in database
+        # Save user data in database and refresh users in list widget
         self.btn_save = QPushButton("Guardar", self)
         self.btn_save.clicked.connect(self.add_user)
         self.btn_save.clicked.connect(self.get_user)
@@ -71,5 +71,11 @@ class UserManagerWindow(QWidget):
         for user in users:
             user_item = f"{user[1]} {user[2]}; {user[3]}; {user[4]}"
             self.list_users.addItem(user_item)
+            
+    def closeEvent(self, event):
+        """This method is called when the user form window is being closed."""
+        print("Closing connection to database...")
+        self.user_repository.close()
+        event.accept()
 
         
