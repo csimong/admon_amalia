@@ -19,7 +19,6 @@ class UserManagerWindow(QWidget):
         form_layout = QFormLayout()
 
         # Create user name, surnames, email and phone widgets
-        
         self.input_name = QLineEdit()
         self.input_surnames = QLineEdit()
         self.input_email = QLineEdit()
@@ -39,12 +38,14 @@ class UserManagerWindow(QWidget):
         # Save user data in database
         self.btn_save = QPushButton("Guardar", self)
         self.btn_save.clicked.connect(self.add_user)
+        self.btn_save.clicked.connect(self.get_user)
         
         left_layout.addLayout(form_layout)
         left_layout.addWidget(self.btn_save)
 
         # ----------- RIGHT: List of users -----------
         self.list_users = QListWidget()
+        self.list_users.addItem(self.get_user())
 
         # Add both sides to main_layout
         main_layout.addLayout(left_layout, stretch=2)
@@ -63,3 +64,12 @@ class UserManagerWindow(QWidget):
         else:
             QMessageBox.warning(
                 self, "Error", "Debes especificar nombre y apellidos del usuario.")
+
+    def get_user(self):
+        users = self.user_repository.get_users()
+        self.list_users.clear()
+        for user in users:
+            user_item = f"{user[1]} {user[2]}; {user[3]}; {user[4]}"
+            self.list_users.addItem(user_item)
+
+        
