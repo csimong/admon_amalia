@@ -1,4 +1,4 @@
-"""Data forms."""
+"""Scipts to manage GUI for user forms."""
 from PyQt6.QtWidgets import QLabel, QLineEdit, QWidget, QPushButton, QMessageBox
 from application.user_manager.repository.user_repository import UserRepository
 class UserManagerWindow(QWidget):

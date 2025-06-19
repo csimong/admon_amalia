@@ -1,4 +1,4 @@
-"""User management file. It contains functions to create, delete and update users."""
+"""User repository script that contains functions to create, delete and update users in the database."""
 
 from shared.database.database_manager import Database
 

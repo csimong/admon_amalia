@@ -1,4 +1,4 @@
-"""Main window configuration. It creates the main app window."""
+"""Landing Page window configuration. It creates the main app window."""
 
 import sys
 from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget, QPushButton, QVBoxLayout
