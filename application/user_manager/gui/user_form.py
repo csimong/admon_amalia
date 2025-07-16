@@ -129,13 +129,13 @@ class UserManagerWindow(QWidget):
         self.btn_save.setText("Actualizar")
             
     def delete_user(self, user_id):
-        respuesta = QMessageBox.question(
+        answer = QMessageBox.question(
             self,
             "Confirmar eliminación",
             "¿Estás seguro de que quieres eliminar este usuario?",
             QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No
         )
-        if respuesta == QMessageBox.StandardButton.Yes:
+        if answer == QMessageBox.StandardButton.Yes:
             self.user_repository.delete_user(user_id)
             self.get_users()
             
