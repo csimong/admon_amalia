@@ -9,13 +9,16 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setWindowTitle("ADMON AMALIA Gestor de Cuentas ")
         self.setGeometry(100, 100, 600, 300)
+        self.setObjectName("main_window")
         
         central_widget = QWidget(self)
+        central_widget.setObjectName("central_widget")
         self.setCentralWidget(central_widget)
         
         layout = QVBoxLayout()
         
         open_user_manager_button = QPushButton("Gestor de Usuarios")
+        open_user_manager_button.setObjectName("open_user_manager_button")
         open_user_manager_button.clicked.connect(self.open_user_manager_window)
         
         layout.addWidget(open_user_manager_button)
