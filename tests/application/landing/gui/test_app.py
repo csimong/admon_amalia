@@ -1,14 +1,15 @@
 """Tests for the main application window."""
 
-import pytest
+from unittest.mock import patch, MagicMock
 from PyQt6.QtWidgets import QPushButton
 from PyQt6.QtCore import Qt
-from unittest.mock import patch
+from pytestqt.qtbot import QtBot
+
 
 from application.landing.gui.app import MainWindow
 
 
-def test_main_window_init(qtbot):
+def test_main_window_init(qtbot: QtBot) -> None:
     """
     Tests the initialization of the MainWindow.
     - Checks the window title.
@@ -20,13 +21,13 @@ def test_main_window_init(qtbot):
     assert window.windowTitle() == "ADMON AMALIA Gestor de Cuentas "
 
     # Search for the button using its name
-    button = window.findChild(QPushButton, "open_user_manager_button")
+    button: QPushButton | None = window.findChild(QPushButton, "open_user_manager_button") # type: ignore
     assert button is not None
     assert button.text() == "Gestor de Usuarios"
 
 
 @patch("application.landing.gui.app.UserManagerWindow")
-def test_open_user_manager_window_click(mock_user_manager_cls, qtbot):
+def test_open_user_manager_window_click(mock_user_manager_cls: MagicMock, qtbot: QtBot) -> None:
     """
     Tests that clicking the button instantiates and shows the UserManagerWindow.
     """
@@ -37,7 +38,7 @@ def test_open_user_manager_window_click(mock_user_manager_cls, qtbot):
     button = window.findChild(QPushButton, "open_user_manager_button")
     assert button is not None
 
-    # Simulate the left click 
+    # Simulate the left click
     qtbot.mouseClick(button, Qt.MouseButton.LeftButton)
 
     # Verify that UserManagerWindow instantiated
