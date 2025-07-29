@@ -4,6 +4,8 @@ from shared.config import DB_NAME
 
 class Database():
     def __init__(self, db_name=DB_NAME):
+        if db_name is None:
+            raise Exception("Database name cannot be None. Check .env file.")
         self.database_location = 'shared/database/'
         self.conn = sqlite3.connect(self.database_location + db_name)
         self.cursor = self.conn.cursor()
