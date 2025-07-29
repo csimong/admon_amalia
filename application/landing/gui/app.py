@@ -7,7 +7,7 @@ from application.user_manager.gui.user_form import UserManagerWindow
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("ADMON AMALIA Gestor de Cuentas ")
+        self.setWindowTitle("ADMON AMALIA Gestor de Cuentas")
         self.setGeometry(100, 100, 600, 300)
         self.setObjectName("main_window")
         
