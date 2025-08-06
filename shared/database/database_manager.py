@@ -7,7 +7,8 @@ class Database():
         if db_name is None:
             raise Exception("Database name cannot be None. Check .env file.")
         self.database_location = 'shared/database/'
-        self.conn = sqlite3.connect(self.database_location + db_name)
+        full_path = db_name if db_name == ":memory:" else self.database_location + db_name # Allow database in memory for tests
+        self.conn = sqlite3.connect(full_path)
         self.cursor = self.conn.cursor()
         
         # Activate foreign keys for the connection
