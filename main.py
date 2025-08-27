@@ -8,6 +8,7 @@ from shared.database.database_manager import Database
 
 def main():
     Database().init_database()
+    Database().close()
 
     # Initiate PyQt app
     app = QApplication(sys.argv)

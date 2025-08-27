@@ -18,7 +18,6 @@ class Database():
         with open(self.database_location + "schema.sql", "r") as f:
             self.cursor.executescript(f.read())
             self.conn.commit()
-        self.close()
         
     def execute(self, query, params=()):
         self.cursor.execute(query, params)
