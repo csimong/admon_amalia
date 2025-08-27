@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS clientes (
 );
 
 CREATE TABLE IF NOT EXISTS loteria (
-    id INTEGER PRIMARY KEY, -- generated manually concatenating numero+sorteo+año
+    id INTEGER PRIMARY KEY, -- generated manually concatenating numero+sorteo+año+dia(jueves|sabado)?
     numero INTEGER NOT NULL,
     sorteo INTEGER NOT NULL, --calculated manually given the week of the year and the day of the lottery
     año INTEGER NOT NULL,
