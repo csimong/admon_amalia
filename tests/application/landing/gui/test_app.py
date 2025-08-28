@@ -8,7 +8,7 @@ from pytestqt.qtbot import QtBot
 
 from application.landing.gui.app import MainWindow
 
-## Unit Tests
+## UNIT TESTS
 def test_main_window_initializes_correctly(qtbot: QtBot) -> None:
     """
     Tests the initialization of the MainWindow.

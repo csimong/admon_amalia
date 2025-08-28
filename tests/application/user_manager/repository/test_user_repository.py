@@ -1,4 +1,4 @@
-"""Tests for the user manager repository."""
+"""Tests for the user form repository."""
 
 import sqlite3
 import pytest
@@ -6,7 +6,6 @@ from application.user_manager.repository.user_repository import UserRepository
 from shared.database.database_manager import Database
 
 
-# INTEGRATION TESTS
 @pytest.fixture
 def user_repository():
     """
@@ -18,7 +17,7 @@ def user_repository():
     yield repo
     repo.close()
 
-# UNIT TESTS
+## UNIT TESTS
 def test_close_closes_connection(user_repository):
     """
     Tests that the close function closes the connection to the database.
@@ -28,7 +27,7 @@ def test_close_closes_connection(user_repository):
         user_repository.db.execute("CREATE TABLE test (id INTEGER)")
 
 
-# INTEGRATION TESTS
+## INTEGRATION TESTS
 def test_add_user_inserts_new_user_into_clientes_table(user_repository):
     """
     Tests that a new user can be added to the Clientes table.
