@@ -5,8 +5,6 @@ from shared.database.database_manager import Database
 import sqlite3
 
 # UNIT TESTS
-
-
 @pytest.fixture
 def in_memory_database():
     """
