@@ -8,6 +8,8 @@ class UserManagerWindow(QWidget):
         super().__init__()
         self.setWindowTitle("Área de gestión de Usuarios")
         self.setGeometry(100, 100, 5000, 5000)
+        self.setObjectName("user_manager_window")
+
 
         # Initialize User repository
         self.user_repository = UserRepository()
@@ -20,13 +22,20 @@ class UserManagerWindow(QWidget):
         
         # ----------- LEFT: Form -----------
         left_layout = QVBoxLayout()
+        left_layout.setObjectName("left_layout")
         form_layout = QFormLayout()
+        form_layout.setObjectName("left_form_layout")
+
 
         # Create user name, surnames, email and phone widgets
         self.input_name = QLineEdit()
+        self.input_name.setObjectName("input_name_line_edit")
         self.input_surnames = QLineEdit()
+        self.input_surnames.setObjectName("input_surnames_line_edit")
         self.input_email = QLineEdit()
+        self.input_email.setObjectName("input_email_line_edit")
         self.input_phone = QLineEdit()
+        self.input_phone.setObjectName("input_phone_line_edit")
         
         self.input_name.setPlaceholderText("Ej: David")
         self.input_surnames.setPlaceholderText("Ej: Bisbal")
@@ -41,6 +50,7 @@ class UserManagerWindow(QWidget):
 
         # Save user data in database and refresh users in list widget
         self.btn_save = QPushButton("Guardar", self)
+        self.btn_save.setObjectName("save_button")
         self.btn_save.clicked.connect(self.save_or_update_user)
         
         left_layout.addLayout(form_layout)
@@ -48,6 +58,7 @@ class UserManagerWindow(QWidget):
 
         # ----------- RIGHT: List of users -----------
         self.table = QTableWidget()
+        self.table.setObjectName("right_table_widget")
         self.table.setColumnCount(6)
         self.table.setHorizontalHeaderLabels(["Nombre", "Apellidos", "Email", "Teléfono", "Editar", "Borrar"])
         self.table.setColumnWidth(0, 200)
