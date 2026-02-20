@@ -5,7 +5,15 @@ CREATE TABLE IF NOT EXISTS clientes (
     nombre TEXT NOT NULL,
     apellidos TEXT NOT NULL,
     email TEXT,
-    telefono TEXT
+    telefono TEXT,
+    
+    -- Avoid user duplicates using email and tf as real unique ids
+    email_norm TEXT GENERATED ALWAYS AS (lower(trim(email))) VIRTUAL,
+    telefono_norm TEXT GENERATED ALWYAS AS (
+        replace(replace(replace(replace(replace(trim(telefono), ' ', ''), '-', ''), '(', ''), ')', ''), '+34', '')
+        ) VIRTUAL,
+    UNIQUE(email_norm)
+    UNIQUE(telefono_norm)
 );
 
 CREATE TABLE IF NOT EXISTS loteria (
